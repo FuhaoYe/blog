@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="json," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JSON (Javascript Object Notation) js对象表示法JSON是一种被许多不同系统用于交换数据的一种数据交换格式，类似还有XML数据交换格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSON随笔录">
+<meta property="og:url" content="https://fuhaoye.github.io/blog/2017/09/26/my-json/index.html">
+<meta property="og:site_name" content="富豪的博客">
+<meta property="og:description" content="JSON (Javascript Object Notation) js对象表示法JSON是一种被许多不同系统用于交换数据的一种数据交换格式，类似还有XML数据交换格式。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-09-26T13:19:23.000Z">
+<meta property="article:modified_time" content="2018-01-12T09:14:06.644Z">
+<meta property="article:author" content="小富富">
+<meta property="article:tag" content="json">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://FuhaoYe.github.io/blog/2017/09/26/my-json/"/>
+
+
+
+
+
+  <title>JSON随笔录 | 富豪的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?507cd337d8f1cfdbd264b49a711c8cff";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">富豪的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://FuhaoYe.github.io/blog/blog/2017/09/26/my-json/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="富豪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSON随笔录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T21:19:23+08:00">
+                2017-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/json/" itemprop="url" rel="index">
+                    <span itemprop="name">json</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/blog/2017/09/26/my-json/" class="leancloud_visitors" data-flag-title="JSON随笔录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JSON (Javascript Object Notation) js对象表示法<br>JSON是一种被许多不同系统用于交换数据的一种数据交换格式，类似还有XML数据交换格式。</p>
+<span id="more"></span>
+
+<h3 id="字面量与变量"><a href="#字面量与变量" class="headerlink" title="字面量与变量"></a>字面量与变量</h3><p> 字面量(literal)：所谓字面量，是对数据值的具体表示，他的字面意思与其想要表达的意思完全一致，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 5</span><br><span class="line">x = x+5</span><br></pre></td></tr></table></figure>
+<p>这里中虽然我们没看看到10，但是我们知道x的值已经是10了，其中x就是变量，5就是字面量</p>
+<p>JSON是基于JavaScript对象字面量的。注意是“基于”,数据交换格式的核心是数据，所以数据对象是由名称-值对(或者键值-对、属性-值对)来实现的(注意里面不包含函数，因为js对象字面量中常常包含函数，还有一个区别就是js对象里面的名称不需要加引号。这两个区别要牢记)。所以数“基于”。</p>
+<h3 id="名称-值对"><a href="#名称-值对" class="headerlink" title="名称-值对"></a>名称-值对</h3><p>所谓名称-值对，名称必须加双引号，但值的话，如果是数字、布尔值、数组、对象、null等其他数据类型，这些则不应该加双引号。</p>
+<p>一个在线检查JSON格式是否错误的网页：<a target="_blank" rel="noopener" href="http://www.jsoneditoronline.org/">http://www.jsoneditoronline.org/</a></p>
+<h3 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h3><p>当你在传输数据时，需要提前告知接收方数据时什么类型，这就涉及到媒体类型(比如互联网媒体类型，内同类型，MIME类型)，他是用”类型/子类型”这种格式来表示，比如见过的text/html。<br>JSON的MIME类型是application/json</p>
+<p>JSON文件使用.json扩展名</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>所有语言都有三种原始数据类型(或者内置类型)</p>
+<ul>
+<li>|—— 数字<br>　　　——— 整型<br>　　　——— 浮点数<br>　　　——— 定点数</li>
+<li>|—— 字符和字符串</li>
+<li>|—— 布尔类型</li>
+</ul>
+<p>大部分语言还有其他数据类型(复合数据类型)，他们是由原始数据类型融合而来的。比如枚举数据类型(数组)，对象数据类型等。</p>
+<p>JSON中的数据类型包括</p>
+<ul>
+<li><p>数字</p>
+</li>
+<li><p>字符串</p>
+</li>
+<li><p>布尔值</p>
+</li>
+<li><p>数组</p>
+</li>
+<li><p>对象</p>
+</li>
+<li><p>null</p>
+</li>
+<li><p>注意不要把null和js中的undefined混淆，尤其是在使用js时。undefined不是JSON中的数据类型，而在js中，undefined是在尝试获取一些不存在的对象或者变量时返回的结果，也就是说，undefined与那些声明的名称和值都不存在的对象或变量有关,而null则仅仅与对象或变量的值有关。null是一个表示“没有值”的值，在JSON中，null必须使用小写形式*</p>
+</li>
+</ul>
+<h3 id="数组与对象"><a href="#数组与对象" class="headerlink" title="数组与对象"></a>数组与对象</h3><p>数组与对象有两个很大的区别：</p>
+<ol>
+<li>数组是值构成的列表或集合，但对象是名称-值对构成的列表或集合</li>
+<li>数组中所有的值应该具有相同的数据类型</li>
+</ol>
+<h3 id="JSON-Schema-模式"><a href="#JSON-Schema-模式" class="headerlink" title="JSON Schema(模式)"></a>JSON Schema(模式)</h3><ol>
+<li>JSON Schema是数据交换中的一种虚拟的”合同”</li>
+<li>JSON Schema可以解决下列有关一致性验证的问题</li>
+</ol>
+<p>JSON Schema一般时客户发来的一份数据要求格式。<br>可以帮助回答一下问题</p>
+<ul>
+<li><p>值的数据类型是否正确？<br>　　可以具体规定一个值是数字、字符串等类型</p>
+</li>
+<li><p>是否包含所需要的数据？<br>　　可以具体规定哪些数据时需要的，那些数据是不需要的</p>
+</li>
+<li><p>值的形式是不是我需要的？<br>　　可以指定范围、最小值和最大值</p>
+</li>
+</ul>
+<blockquote>
+<p>第一个为”$schema”,值必须为所用草拟版本的链接<br>第二个为”title”,名称-值对应该是JSON Schema文件的标题:比如说表示一直猫的JSON Schema文件格式<br>第三个为”properties”,是需要定义的属性：比如说该猫的属性，常常带有数据限制(类似长度限制)<br>第四个为”required”,是个数组，表示在JSON中必须填写的properties中的属性:比如下面代码中name,age,declawed必须在JSON中填写，但是description没在required中,在JSON不是必名称-值对。</p>
+</blockquote>
+<p>一份JSON Schema：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;<span class="variable">$schema</span>&quot;</span>: <span class="string">&quot;http://json-schema.org/draft-04/schema#&quot;</span>,</span><br><span class="line">    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;Cat&quot;</span>,</span><br><span class="line">    <span class="string">&quot;properties&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">            <span class="string">&quot;minLength&quot;</span>: 3, //minLength为最小字符串长度</span><br><span class="line">            <span class="string">&quot;maxLength&quot;</span>: 20 //manLength为最大字符串长度</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;age&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;number&quot;</span>,</span><br><span class="line">            <span class="string">&quot;minimum&quot;</span>: 0,   //minimum为最小整型大小</span><br><span class="line">            <span class="string">&quot;description&quot;</span>: <span class="string">&quot;Your cat&#x27;s age in years.&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;declawed&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;boolean&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;required&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;name&quot;</span>,</span><br><span class="line">        <span class="string">&quot;age&quot;</span>,</span><br><span class="line">        <span class="string">&quot;declawed&quot;</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据上面的JSON Schema,写的一份符合要求的JSON数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;fufu&quot;</span>,     //满足名字为3-20字符长度</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: 2,           //满足年龄大于0</span><br><span class="line">    <span class="string">&quot;declawed&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;我这个属性可写可不写，毕竟我不在required中&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你想要验证你的JSON与JSON Schema格式是否出错,请访问下面链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://jsonlint.com/">http://jsonlint.com</a></p>
+</blockquote>
+<p>如果你想要验证你的JSON与JSON Schema是否一致，请访问下面链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://jsonschemalint.com/draft4">https://jsonschemalint.com/draft4</a></p>
+</blockquote>
+<p>JSON Schema还支持正则表达式、枚举类型等。<br>如果你想要深入掌握JSON Schema可以访问下面的链接</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://json-schema.org/">JSON Schema主页</a></li>
+<li><a target="_blank" rel="noopener" href="http://json-schema.org/latest/json-schema-validation.html">JSON Schema验证规范</a></li>
+</ul>
+<h3 id="序列化与反序列化"><a href="#序列化与反序列化" class="headerlink" title="序列化与反序列化"></a>序列化与反序列化</h3><p>反序列化：将文本转化为对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myObject = JSON.parse(??.responseText)</span><br></pre></td></tr></table></figure>
+
+<p>序列化： 将对象转化为文本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myJSON = JSON.stringify(myObject)</span><br></pre></td></tr></table></figure>
+
+<h3 id="XMLHttpRequest"><a href="#XMLHttpRequest" class="headerlink" title="XMLHttpRequest"></a>XMLHttpRequest</h3><blockquote>
+<p>XMLHttpRequest是一种js对象，无需刷新页面即可从一个URL获取数据，常用语AJAX编程</p>
+</blockquote>
+<p>下列是一个get请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">request = new XMLHttpRequest()</span><br><span class="line">request.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span>(request.readyState == 4) &#123;</span><br><span class="line">        <span class="keyword">if</span>((request.status &gt;= 200 &amp;&amp; request.status &lt; 300) || request.status == 304) &#123;</span><br><span class="line">	       alert(<span class="string">&#x27;提交成功&#x27;</span>)</span><br><span class="line">           alert(request.responseText);	</span><br><span class="line">           &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">&quot;提交失败 ：&quot;</span> + request.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">request.open(<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;#?&quot;</span>+url,<span class="literal">true</span>);</span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure>
+
+<p>XMLHttpRequest中属性：</p>
+<ul>
+<li><p>onreadystatechange<br>可以在代码中给他赋值为一个函数</p>
+</li>
+<li><p>readyState<br>返回一个0-4的值，用来表示状态吗</p>
+</li>
+<li><p>status<br>返回HTTP状态码,(如200表示请求成功)</p>
+</li>
+<li><p>responseText<br>当请求成功时，该属性会包含作为文本的相应体(如我们请求的JSON)</p>
+</li>
+</ul>
+<p>注意: js中属性的值可以是一个函数，因为js中函数也是一类对象，对象是一类数据，因此可以被赋值给一个变量(属性)、修改和传递。</p>
+<p>request.onreadystatechange表示readyState(就绪状态)每次改变时就会调用该函数。<br>就绪状态从0-4分别意味着：</p>
+<ul>
+<li>0表示未发送: 表示open()函数还没有执行</li>
+<li>1表示已经发送: open()函数已经执行，但是send()函数还没有执行</li>
+<li>2表示接收到头部: 表示send()函数已执行，切头部和状态码都可以获取了</li>
+<li>3表示解析中： 表示头部已经收到，但响应体正在解析中</li>
+<li>4表示完成： 表示请求完成，包括响应头和响应体的内容都已经接收到了</li>
+</ul>
+<h3 id="跨域资源共享-CORS"><a href="#跨域资源共享-CORS" class="headerlink" title="跨域资源共享(CORS)"></a>跨域资源共享(CORS)</h3><blockquote>
+<p>通过设置响应头，是的跨域请求资源(如JSON文档)可以成功。</p>
+</blockquote>
+<p>首先要明白什么是同源策略?<br>所谓同源策略，就是浏览器处于安全考虑，对资源共享有一定的限制<br>同源策略要求后台请求仅仅可以请求来自同一域名的资源，由于后台请求仅可以在浏览器的开发者工具中看见，因此保护了普通用户的安全，客户端的则能在网页审查元素中看到。</p>
+<p>假如前面实例中的代码是在一个名为<a target="_blank" rel="noopener" href="http://www.mycoolsite.com的网站上执行的,由于它是最开始的请求的url,所以它就是原始域名,而api的url是http//api.openweather.org/data/2.5/weather?lat=35&amp;lon=113,%E5%85%B6%E5%9F%9F%E5%90%8Dhttp://api.openweather.org%E4%B8%8E%E5%8E%9F%E5%A7%8B%E5%9F%9F%E5%90%8Dhttp://www.mycoolsite.com%E4%B8%8D%E5%8C%B9%E9%85%8D%EF%BC%8C%E5%BE%88%E6%98%8E%E6%98%BE%EF%BC%8C%E8%BF%99%E8%BF%9D%E8%83%8C%E4%BA%86%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E3%80%82%E6%89%80%E4%BB%A5%E8%AF%A5API%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E4%B8%80%E4%BA%9B%E6%89%8B%E6%AE%B5%E6%9D%A5%E7%BB%95%E8%BF%87%E8%BF%99%E4%BA%9B%E7%8E%B0%E5%AE%9E%EF%BC%8C%E6%89%8D%E8%83%BD%E4%BD%BF%E5%90%8E%E5%8F%B0%E8%AF%B7%E6%B1%82%E4%B8%8E%E7%9B%B8%E5%BA%94%E9%A1%BA%E5%88%A9%E8%BF%9B%E8%A1%8C%E3%80%82">http://www.mycoolsite.com的网站上执行的，由于它是最开始的请求的URL，所以它就是原始域名，而API的URL是http://api.openweather.org/data/2.5/weather?lat=35&amp;lon=113,其域名http://api.openweather.org与原始域名http://www.mycoolsite.com不匹配，很明显，这违背了同源策略。所以该API需要使用一些手段来绕过这些现实，才能使后台请求与相应顺利进行。</a></p>
+<p>如何跨域资源共享？<br>一些API开发者在他们的服务器上实现了跨域资源共享，这些服务器会在响应头额外加上一些带有Access-Control-Allow前缀的属性</p>
+<p>例如xxAPI对于请求的<a target="_blank" rel="noopener" href="http://api.openweather.org/weather?lat=35&amp;lon=113%E8%BF%94%E5%9B%9E%E7%9A%84%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%AD%E7%9A%84Access-Control-Allow%E9%83%A8%E5%88%86">http://api.openweather.org/weather?lat=35&amp;lon=113返回的响应头中的Access-Control-Allow部分</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Credentials: <span class="literal">true</span></span><br><span class="line">Access-Control-Allow-Methods: GET, POST</span><br><span class="line">Access-Control-Allow-Origin: *</span><br></pre></td></tr></table></figure>
+<p>这些头部定义了证书是否可用？哪些HTTP(GET、POST、DELETE、HEAD等)是可用的？以及最最重要的一点，即允许哪些域名？本例中，此处包含一个星号*，他表示任何域名都是允许的。</p>
+<p>CORS使得如Open Weather这样的站点可以让用户在用户端使用AJAX交互的方式获取他们的数据，同事，CORS还可以用于禁止某些域名的访问，来防止有些人用API做坏事，如CSRF，eg：黑客企图通过将JSON放入<srcipt></srcipt>标签来利用银行站点的信任。现在银行有了一个新的安全方式来防止这种攻击，这个方式就是实现CORS并且在其响应头中加入类似如下的内容：</p>
+<blockquote>
+<p>使用CORS进行安全防护</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Methods: POST</span><br><span class="line">Access-Control-Origin: http://www.somebank.com</span><br></pre></td></tr></table></figure>
+<p>上述内容中，我们仅仅允许通过POST方法请求资源，如果有人想通过将URL放入<script></script>标签来进行请求(使用GET方式)，浏览器会阻止他，同时，由于具体设定了银行站点的URL，浏览器会禁止除<a target="_blank" rel="noopener" href="http://www.somebank.com以外的站点去获取资源./">http://www.somebank.com以外的站点去获取资源。</a></p>
+<p>使用CORS也会遇到一些问题，而且也不是所有的JSON数据都是从标准的Web API(Web API是通过HTTP与服务进行交互的一系列指令与标准)中获取的，例如可能你又两个域名不同的站点(<a target="_blank" rel="noopener" href="http://www.domainone.com和http//www.domaintwo.com)%EF%BC%8C%E4%B8%94%E6%83%B3%E8%AE%A9http://www.domainone.com%E4%B8%8Ehttp://www.domaintwo.com%E5%85%B1%E4%BA%AB%E4%B8%80%E4%BA%9BJSON%E6%96%87%E4%BB%B6%EF%BC%8C%E8%BF%99%E5%B0%B1%E9%9C%80%E8%A6%81JSON-P%E4%BA%86">http://www.domainone.com和http://www.domaintwo.com)，且想让http://www.domainone.com与http://www.domaintwo.com共享一些JSON文件，这就需要JSON-P了</a></p>
+<h3 id="JSON-P"><a href="#JSON-P" class="headerlink" title="JSON-P"></a>JSON-P</h3><blockquote>
+<p>使用script标签，绕过同归策略的限制，以从不同域名的服务器上请求JSON</p>
+</blockquote>
+<p>JSON-P指带有padding的JSON,我们之前说的<srcipt></srcipt>标签不受同源策略的影响，JSON-P就是利用这一点来向不同域名的站点请求JSON的<br>JSON-P并没有CORS那么理想，它只是一个备选方案(CORS是更好的方案，同时也是一种标准)，不过有时候，还是很需要这种不是很规范的解决方案的。当不能使用CORS时，仍需要通过某种关系来实现<a target="_blank" rel="noopener" href="http://www.domainone.com和http//www.domaintwo.com%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E6%B5%81%E3%80%82">http://www.domainone.com和http://www.domaintwo.com之间的交流。</a></p>
+<p>JSON-P中的padding(内联)非常简单，就是将js加入JSON文档，如下：</p>
+<blockquote>
+<p>示例：JSON-P</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getTheAnimal(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;animal&quot;</span>: <span class="string">&quot;cat&quot;</span> </span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>内联与JSON文档的js调用了一个函数，函数参数是JSON。函数参数提供了一种将数据传递给函数的方式。例如，如果你需要一个函数来实现两数相加的功能，首先就需要一个能够将两个数传递给函数的方式。<br>该函数实在客户端的js代码中定义的</p>
+<blockquote>
+<p>示例: 在js中声明的函数</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> getTheAnimal(data) &#123;</span><br><span class="line">    var myAnimal = data.anima   //will be <span class="string">&quot;cat&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当在js中声明该函数之后，需要进行一些设置，这部分就体现出了JSON-P是如何利用<script></script>标签不受同源策略影响这一点的，如下：</p>
+<blockquote>
+<p>示例： 创建<script></script>标签，并将其动态添加到HTML文档的<head></head>标签中</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var script = document.creatElement(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">script.type = <span class="string">&quot;text/javascript&quot;</span>;</span><br><span class="line">script.src = <span class="string">&quot;http://notarealdomain.com/animal.json&quot;</span>;</span><br><span class="line">document.getElementsByTagName(<span class="string">&#x27;head&#x27;</span>)[0].appendChild(script);</span><br></pre></td></tr></table></figure>
+<p>服务器端也需要对JSON-P提供一定的支持，他应允许用户自定义函数的名字。它通常是作为URL中的queryString的参数传递的，如下：</p>
+<blockquote>
+<p>通过queryString来告知服务器函数的名字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">script.src = <span class="string">&quot;http://notarealdomain.com/animal.json?callback=getTing&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>服务器会根据callback参数的值来动态地为在JSON中内联的函数命名</p>
+<blockquote>
+<p>JSON-P中动态命名的函数</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getThing(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;animal&quot;</span>: <span class="string">&quot;cat&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/json/" rel="tag"># json</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/09/26/DNS/" rel="next" title="DNS的作用是什么？为什么一定要配置DNS才能上网">
+                <i class="fa fa-chevron-left"></i> DNS的作用是什么？为什么一定要配置DNS才能上网
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/10/02/js-design/" rel="prev" title="javaScript Design Patterns笔记">
+                javaScript Design Patterns笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/blog/images/avatar.gif"
+              alt="" />
+          
+            <p class="site-author-name" itemprop="name"></p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/blog/archives/%20%7C%7C%20archive">
+            
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                  
+                    <i class="fa fa-fw fa-google"></i>Google</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">字面量与变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8D%E7%A7%B0-%E5%80%BC%E5%AF%B9"><span class="nav-number">2.</span> <span class="nav-text">名称-值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">媒体类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.</span> <span class="nav-text">数组与对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-Schema-%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">JSON Schema(模式)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">序列化与反序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest"><span class="nav-number">8.</span> <span class="nav-text">XMLHttpRequest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB-CORS"><span class="nav-number">9.</span> <span class="nav-text">跨域资源共享(CORS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-P"><span class="nav-number">10.</span> <span class="nav-text">JSON-P</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小富富</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("wXWBniJ7GHSK3ie2bRITeeAU-gzGzoHsz", "RQTmL59DyG1ewKjm9vyBtfli");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
